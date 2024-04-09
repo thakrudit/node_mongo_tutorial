@@ -5,15 +5,19 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon ./server.js"
   },
   "author": "Udit",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.4",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   }
 }

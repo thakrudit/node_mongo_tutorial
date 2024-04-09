@@ -2,6 +2,15 @@ const express = require("express");
 const router = express.Router();
 const menu_item = require('./../models/menu_item');
 
+router.get('/', async (req, res) => {
+    try {
+        const data = await menu_item.find();
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(500).json({ err: 'internal server error' });
+    }
+
+});
 
 router.post('/', async (req, res) => {
     try {
