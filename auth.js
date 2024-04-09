@@ -1,12 +1,12 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const person = require('./models/person');
-const menu_item = require('./models/menu_item');
+// const menu_item = require('./models/menu_item');
 
 
 passport.use(new LocalStrategy(async(username, password, done) => {
     try {
-        const user = await person.findOne({username: username});
+        const user = await person.findOne({ username });
         if(!user){
             return done(null, false, {message: "Incorrect Username"});
         }
@@ -19,7 +19,7 @@ passport.use(new LocalStrategy(async(username, password, done) => {
         return done(null, false, {message: "Incorrect Password"});
 
     } catch (err) {
-        return done( err);        
+        return done( err, );        
     }
 }));
 

@@ -41,32 +41,30 @@ const person_schema = new mongoose.Schema({
     }
 });
 
-person_schema.pre('save', async function(next){
+person_schema.pre('save', async function (next) {
     const person = this;
 
-    if(!person.isModified('password')) return next();
+    if (!person.isModified('password')) return next();
 
     try {
         const salt = await bcrypt.genSalt(10);
-      const hashPassword = await bcrypt.hash(person.password, salt);
-      person.password = hashPassword;
-      next();
+        const hashPassword = await bcrypt.hash(person.password, salt);
+        person.password = hashPassword;
+        next();
 
-        
     } catch (err) {
         return next(err);
     }
-
 });
 
-person_schema.methods.comarePassword = async function(condidatePassword){
+person_schema.methods.comarePassword = async function (condidatePassword) {
     try {
         const isMatch = await bcrypt.compare(condidatePassword, this.password);
         return isMatch;
-        
+
     } catch (err) {
         throw err;
-        
+
     }
 }
 
