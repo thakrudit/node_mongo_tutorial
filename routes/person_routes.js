@@ -27,9 +27,7 @@ router.post('/signup', async (req, res) => {
         }
         
         const token = generateToken(payload);
-        console.log("token : ", token);
         res.status(200).json({response: response, token: token});
-        // res.status(200).json(response);
 
     } catch (err) {
         res.status(500).json({ err: 'Internal server error...' });
