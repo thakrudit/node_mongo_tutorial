@@ -6,7 +6,6 @@ const passport = require('./auth');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const PORT = process.env.PORT || 3000;
 
 // Middleware
 const logRequest = (req, res, next) =>{
@@ -30,7 +29,8 @@ const menu_item_routes = require('./routes/menu_item_roures')
 app.use('/person', person_routes);
 app.use('/menu_item', menu_item_routes);
 
-
+// Listening to Localhost Server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
     console.log(`listening on port : ${PORT}`);
 })

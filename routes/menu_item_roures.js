@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
 });
 
-router.post('/', async (req, res) => {
+router.post('/createMenu', async (req, res) => {
     try {
         const menu_data = req.body;
         const new_menu_data = new menu_item(menu_data);
