@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 // Middleware
 const logRequest = (req, res, next) =>{
     console.log(`[${new Date().toLocaleString()}] Request made to : ${req.originalUrl}`);
-    next();
+    next(); //Move to the next phase
 }
-app.use(logRequest);
+app.use(logRequest); //Used in all Routes
 
 app.use(passport.initialize());
 const localAuthMiddleware = passport.authenticate('local', {session: false});
@@ -32,5 +32,6 @@ app.use('/menu_item', menu_item_routes);
 // Listening to Localhost Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
+    console.clear();
     console.log(`listening on port : ${PORT}`);
 })
