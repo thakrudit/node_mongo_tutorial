@@ -21,13 +21,14 @@ router.post('/signup', async (req, res) => {
         const new_data = new person(data);
         
         const response = await new_data.save();
-        const payload = {
-            id: response.id,
-            username: response.username
-        }
+        res.status(200).json({msg: "SignUp Successfully", response})
+        // const payload = {
+        //     id: response.id,
+        //     username: response.username
+        // }
         
-        const token = generateToken(payload);
-        res.status(200).json({response: response, token: token});
+        // const token = generateToken(payload);
+        // res.status(200).json({response: response, token: token});
 
     } catch (err) {
         res.status(500).json({ err: 'Internal server error...' });
