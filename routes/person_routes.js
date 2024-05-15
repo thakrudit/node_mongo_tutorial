@@ -41,7 +41,7 @@ router.post('/login', async (req, res) => {
 
         const user = await person.findOne({username: username});
 
-        if( !user || !(await user.comparePassword(password))){
+        if( !user && !(await user.comparePassword(password))){
             return res.status(401).json({error: 'Invalid username or password'});
         }
         const payload = {
